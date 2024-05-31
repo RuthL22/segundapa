@@ -1,0 +1,106 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>{{ isNew ? 'Nueva' : 'Editar' }} Empleado</ion-title>
+
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/empleado-list"></ion-back-button>
+    </ion-buttons>
+
+    <ion-buttons slot="primary">
+      <ion-button *ngIf="!isNew" fill="solid" (click)="eliminarEmpleado()" color="danger">
+        Eliminar
+      </ion-button>
+    </ion-buttons>
+    
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" color="light">
+  <ion-list [inset]="true">
+    <ion-item>
+      <ion-input label="ID" [(ngModel)]="id" readonly="true" disabled="true"></ion-input>
+    </ion-item>
+
+
+    <ion-item>
+      <ion-label>Codigo: </ion-label>
+      <ion-input required #codigoInput="ngModel" [(ngModel)]="empleado.codigo" name="codigo" type="text"></ion-input>
+    </ion-item>
+    <div class="error-message">
+      <ion-text *ngIf="codigoInput?.invalid && codigoInput?.touched" color="danger">
+        <p *ngIf="codigoInput?.errors?.['required']">Este campo es obligatorio</p>
+      </ion-text>
+    </div>
+
+
+    <ion-item>
+      <ion-label>Nombre: </ion-label>
+      <ion-input required #nameInput="ngModel" [(ngModel)]="empleado.nombre" name="nombre" type="text"></ion-input>
+    </ion-item>
+      <div class="error-message">
+        <ion-text *ngIf="nameInput?.invalid && nameInput?.touched" color="danger">
+          <p *ngIf="nameInput?.errors?.['required']">Este campo es obligatorio</p>
+        </ion-text>
+      </div>
+
+
+
+      <ion-item>
+        <ion-label>Direccion: </ion-label>
+        <ion-input required #direccionInput="ngModel" [(ngModel)]="empleado.direccion" name="direccion" type="text"></ion-input>
+      </ion-item>
+      <div class="error-message">
+        <ion-text *ngIf="direccionInput?.invalid && direccionInput?.touched" color="danger">
+          <p *ngIf="direccionInput?.errors?.['required']">Este campo es obligatorio</p>
+        </ion-text>
+      </div>
+
+
+
+    <ion-item>
+      <ion-label>Contacto: </ion-label>
+      <ion-input required #contactoInput="ngModel" type="number" [(ngModel)]="empleado.contacto"></ion-input>
+    </ion-item>
+    <div class="error-message">
+      <ion-text *ngIf="contactoInput.invalid && contactoInput.touched" color="danger">
+        <p *ngIf="contactoInput?.errors?.['required']">Este campo es obligatorio</p>
+      </ion-text>
+    </div>
+
+
+    <ion-item>
+      <ion-label>Cedula: </ion-label>
+      <ion-input required #cedulaInput="ngModel" type="number" [(ngModel)]="empleado.cedula"></ion-input>
+    </ion-item>
+    <div class="error-message">
+      <ion-text *ngIf="cedulaInput.invalid && cedulaInput.touched" color="danger">
+        <p *ngIf="cedulaInput?.errors?.['required']">Este campo es obligatorio</p>
+      </ion-text>
+    </div>
+    
+
+
+      <ion-item>
+        <ion-label>Fecha</ion-label>
+        <ion-input required #fechaInput!="ngModel" type="date" [(ngModel)]="empleado.fecha"></ion-input>
+      </ion-item>
+   
+
+  
+
+
+
+
+
+
+
+
+  </ion-list>
+
+
+ <ion-button fill="solid" (click)="guardarEmpleado()" color="danger" class="ion-margin-top ion-margin-bottom ion-margin-horizontal">
+  Guardar
+</ion-button>
+
+
+</ion-content>
