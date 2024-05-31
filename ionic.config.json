@@ -1,0 +1,7 @@
+{
+  "name": "segundaparcia",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
